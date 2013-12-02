@@ -9,5 +9,9 @@
  */
 
 function FirstCtrl($scope) {
-	$scope.data = {message: "Hello"};
+//	$scope.data = {message: "Hello"};
+}
+
+function SecondCtrl($scope) {
+//	$scope.data = {message: "Hello"};
 }
