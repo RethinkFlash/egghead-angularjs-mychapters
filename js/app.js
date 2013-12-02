@@ -8,8 +8,6 @@
  *  Also remember to create a .jshintrc file in the root directory
  */
 
-(function () {
-	"use strict";
-	// this function is strict...
-
-}());
+function FirstCtrl($scope) {
+	$scope.data = {message: "Hello"};
+}
