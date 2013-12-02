@@ -1,0 +1,13 @@
+{
+	"name": "my-project",
+	"version": "0.0.1",
+	"main": "app/css/main.css",
+	"ignore": [
+		".jshintrc",
+		"**/*.txt"
+	],
+	"dependencies": {
+		"angular": "master"
+	},
+	"devDependencies": {}
+}
