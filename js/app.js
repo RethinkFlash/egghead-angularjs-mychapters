@@ -1,18 +1,57 @@
-var app = angular.module("twitterApp", []);
+var app = angular.module("superApp", []);
 
-app.controller("AppCtrl", function ($scope) {
-	$scope.loadMoreTweets = function () {
-		alert("Loading tweets!");
-	};
-	$scope.deleteTweets = function () {
-		alert("Delete tweets!");
+app.directive("superhero", function() {
+	return {
+		restrict:"E",
+		scope:{},
+		controller: function($scope) {
+			$scope.abilities = [];
+			this.addStrength = function() {
+				$scope.abilities.push("strength");
+			};
+
+			this.addSpeed = function() {
+				$scope.abilities.push("speed");
+			};
+
+			this.addFlight = function() {
+				$scope.abilities.push("flight");
+			}
+		},
+		link: function(scope, element, attrs) {
+			element.addClass("btn");
+			element.bind("mouseenter", function() {
+				scope.abilities.forEach(function(power) {
+					console.log(power);
+				});
+			});
+		}
 	}
 });
 
-app.directive("enter", function () {
-	return function (scope, element, attrs) {
-		element.bind("mouseenter", function () {
-			scope.$apply(attrs.enter);
-		})
+app.directive("strength", function() {
+	return {
+		require: "superhero",
+		link: function($scope, element, attrs, superheroCtrl) {
+			superheroCtrl.addStrength();
+		}
+	}
+});
+
+app.directive("speed", function() {
+	return {
+		require: "superhero",
+		link: function($scope, element, attrs, superheroCtrl) {
+			superheroCtrl.addSpeed();
+		}
+	}
+});
+
+app.directive("flight", function() {
+	return {
+		require: "superhero",
+		link: function($scope, element, attrs, superheroCtrl) {
+			superheroCtrl.addFlight();
+		}
 	}
 });
