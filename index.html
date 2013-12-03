@@ -15,7 +15,7 @@
 				</div>
 			</form>
 			<table class="table table-striped">
-				<tr ng-repeat="person in Avengers.cast|filter:searchText">
+				<tr ng-repeat="person in Avengers.cast|filter:searchText|orderBy:'name'|limitTo:5">
 					<td>{{ person.name }}</td>
 					<td>{{ person.email }}</td>
 				</tr>
