@@ -1,57 +1,19 @@
-var app = angular.module("superApp", []);
+var app = angular.module("choreApp", []);
 
-app.directive("superhero", function() {
+app.controller("ChoreCtrl", function($scope) {
+	$scope.logChore = function(chore) {
+		alert(chore+" is done");
+	}
+})
+
+app.directive('kid', function () {
+
 	return {
-		restrict:"E",
-		scope:{},
-		controller: function($scope) {
-			$scope.abilities = [];
-			this.addStrength = function() {
-				$scope.abilities.push("strength");
-			};
-
-			this.addSpeed = function() {
-				$scope.abilities.push("speed");
-			};
-
-			this.addFlight = function() {
-				$scope.abilities.push("flight");
-			}
+		restrict: "E",
+		scope: {
+			done: "&"
 		},
-		link: function(scope, element, attrs) {
-			element.addClass("btn");
-			element.bind("mouseenter", function() {
-				scope.abilities.forEach(function(power) {
-					console.log(power);
-				});
-			});
-		}
-	}
-});
-
-app.directive("strength", function() {
-	return {
-		require: "superhero",
-		link: function($scope, element, attrs, superheroCtrl) {
-			superheroCtrl.addStrength();
-		}
-	}
-});
-
-app.directive("speed", function() {
-	return {
-		require: "superhero",
-		link: function($scope, element, attrs, superheroCtrl) {
-			superheroCtrl.addSpeed();
-		}
-	}
-});
-
-app.directive("flight", function() {
-	return {
-		require: "superhero",
-		link: function($scope, element, attrs, superheroCtrl) {
-			superheroCtrl.addFlight();
-		}
-	}
+		template: '<input type="text" ng-model="chore"/>{{ chore }} ' +
+			'<button type="button" class="btn btn-success" ng-click="done({ chore:chore })">Done</button>'
+	};
 });
