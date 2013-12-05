@@ -1,27 +1,19 @@
-var app = angular.module("PhoneApp", []);
+var app = angular.module("zippyApp", []);
 
-app.controller("AppCtrl", function($scope) {
-
-});
-
-app.directive("buttontoolbar", function() {
+app.directive("zippy", function() {
 	return {
-		scope: {
-
-		},
 		restrict: "E",
-		transclude: true,
-		template: '<div ng-transclude class="btn-toolbar" role="toolbar"></div>'
-	}
-});
-
-app.directive("buttongroup", function() {
-	return {
 		scope: {
-
+			title: "@",
+			content: "&"
 		},
-		restrict: "E",
 		transclude: true,
-		template: '<div ng-transclude class="btn-group"></div>'
+		template:'<div>\n\t<h3 ng-click="toggleContent()">{{ title }}</h3>\n\t<div ng-transclude ng-show="isContentVisible">Hello World</div>\n</div>',
+		link: function (scope) {
+			scope.isContentVisible = false;
+			scope.toggleContent = function() {
+				scope.isContentVisible = !scope.isContentVisible;
+			}
+		}
 	}
 });

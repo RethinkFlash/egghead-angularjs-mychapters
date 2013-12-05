@@ -7,16 +7,12 @@
 	<script src="bower_components/jquery/jquery.js"></script>
 </head>
 <body>
-<div ng-app="PhoneApp">
-	<div ng-controller="AppCtrl">
-		<buttontoolbar>
-			<buttongroup>
-				<button type="button" class="btn btn-default">1</button>
-				<button type="button" class="btn btn-default">2</button>
-				<button type="button" class="btn btn-default">3</button>
-			</buttongroup>
-		</buttontoolbar>
-	</div>
+<div ng-app="zippyApp">
+	<input type="text" ng-model="model.title"/>
+	<input type="text" ng-model="model.content"/>
+	<zippy title="{{ model.title }}">
+		This is the {{ model.content }}
+	</zippy>
 </div>
 
 
