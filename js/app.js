@@ -1,17 +1,27 @@
 var app = angular.module("PhoneApp", []);
 
 app.controller("AppCtrl", function($scope) {
-	$scope.callHome = function(msg) {
-		alert(msg);
+
+});
+
+app.directive("buttontoolbar", function() {
+	return {
+		scope: {
+
+		},
+		restrict: "E",
+		transclude: true,
+		template: '<div ng-transclude class="btn-toolbar" role="toolbar"></div>'
 	}
 });
 
-app.directive("phone", function() {
+app.directive("buttongroup", function() {
 	return {
 		scope: {
-			dial: "&"
+
 		},
-		template: '<input type="text" ng-model="value"/>' +
-			'<button type="button" class="btn btn-success" ng-click="dial({message:value})">Call Home!</button>'
+		restrict: "E",
+		transclude: true,
+		template: '<div ng-transclude class="btn-group"></div>'
 	}
 });
